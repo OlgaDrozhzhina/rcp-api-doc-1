@@ -603,7 +603,7 @@ HTTP статусы ответа
                     "driverName": "",
                     "docNumber": 1234,
                     "emtCodeFrm": 370
-                },
+                }
             ],
     "total": {
         "subdivision": 0,
@@ -629,7 +629,7 @@ HTTP статусы ответа
         "driverName": null,
         "docNumber": 0,
         "emtCodeFrm": 0
-    }
+    }}]
 }
 ```
 
@@ -861,7 +861,7 @@ HTTP статусы ответа
                         "totalTotalVATRoad": 0.0
                     },
                     "totalQuantity": 7748.850000
-                },
+                }
             ],
             "divisionSummaryOilGas": {
                 "totalOilGas": 50579.27,
@@ -1130,6 +1130,29 @@ HTTP статусы ответа
 | `actualFlag`   | `integer` | Флаг атуильности
 | `сodeOilGroup` | `integer` | Код группы нефтепродукта
 | `nameOilGroup` | `string`  | Наименование группы нефтепродукта
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Получить список групп нефтепродуктов
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/OilGroup>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Структура ответа
+
+| Key    | Type      | Description
+|--------|-----------|------------
+| `code` | `integer` | Код группы
+| `name` | `string`  | Наименование группы
 
 HTTP статусы ответа
 
@@ -1940,3 +1963,142 @@ HTTP статусы ответа
 | 401  | Unauthorized |
 | 500  | Internal Server Error |
 
+### Сохранение настроек оповещения о минимальной сумме на счете.
+
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/NoticeInfo>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                        | Type      | Required | Description
+|----------------------------|-----------|:--------:|------------
+| `emitent`                  | `integer` |   Yes    | Номер эмитента
+| `contrCode`                | `integer` |   Yes    | Номер договора
+| `minimumBalanceNoticeFlag` | `bool`    |   Yes    | Флаг отправки уведомления о достижении минимального баланса
+| `minimumBalanceSumm`       | `decimal` |   Yes    | Сумма минимального баланса
+
+Пример запроса
+
+```json
+{
+  "emitent": 0,
+  "contrCode": 0,
+  "minimumBalanceNoticeFlag": true,
+  "minimumBalanceSumm": 0
+}
+```
+
+Структура ответа
+
+int
+
+HTTP статусы ответа
+
+| Code | Description |
+|------|-------------|
+| 200  | OK          |
+| 400  | Bad request |
+| 401  | Unauthorized |
+| 500  | Internal Server Error |
+
+### Движение денежных средств по договору
+
+`POST`: <https://ssl.beloil.by/rcp/i/api/v2/PaymentReport>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key         | Type   | Required | Description
+|-------------|--------|:--------:|------------
+| `startDate` | `date` |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
+| `endDate`   | `date` |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
+| `contractId`       | `integer` |   Yes    | Номер договора
+| `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
+| `cardNumber`       | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем картам договора
+| `subDivisnNumber`  | `integer` |   Yes    | Номер подразделения. Если значение меньше нуля, тогда отчет по всем подразделениям договора
+| `flChoice`         | `integer` |   Yes    | Параметр `FlChoice` - флаг выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` -  оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
+| `author`           | `string`  |    No    | Автор изменений 
+| `emtCodeFrm`       | `integer` |    No    | Код эмитента, если меньше нуля, то по всем подразделениям
+| `azsCode`          | `integer` |    No    | Номер азс, если меньше нуля, то по всем подразделениям
+
+Пример запроса
+
+```json
+{
+  "startDate": "2025-09-08T07:05:28.924Z",
+  "endDate": "2025-09-08T07:05:28.924Z",
+  "contractId": 0,
+  "contractIssuerId": 0,
+  "flChoice": 0,
+  "cardNumber": 0,
+  "subDivisnNumber": 0,
+  "discountCode": 0,
+  "author": "string",
+  "emtCodeFrm": 0,
+  "azsCode": 0
+}
+```
+
+Структура ответа
+
+| Key            | Type      | Description
+|----------------|-----------|------------
+| `PayDate` | `integer` | Дата платежа
+| `PayDocument`     | `string`  | Номер документа выписки 
+| `PaySum`         | `string`  | Сумма платежа
+
+Пример успешного ответа
+
+```json
+[
+  {
+    "payDate": "2025-09-08T12:01:31.099Z",
+    "payDocument": "string",
+    "paySum": 0
+  }
+]
+```
+
+HTTP статусы ответа
+
+| Code | Description |
+|------|-------------|
+| 200  | OK          |
+| 400  | Bad request |
+| 401  | Unauthorized |
+| 500  | Internal Server Error |
+
+### Получить информацию о валюте по умолчанию
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Report>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Параметры запроса
+
+| Key       | Type      |Discription
+|-----------|-----------|------------
+| `doctype` | `integer` | Тип документа
+| `date`    | `string`  | Дата
+
+Структура ответа
+
+byte[]
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
