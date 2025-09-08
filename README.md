@@ -1707,3 +1707,141 @@ HTTP статусы ответа
 | 401  | Unauthorized
 | 500  | Internal Server Error
 
+### Получить опции настроек по умолчанию
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Catalog/options>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Структура ответа
+
+| Key       | Type      | Description
+|-----------|-----------|------------
+| `percent` | `decimal` | Процент
+
+```json
+{
+"percent": 5
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Получить информацию о валюте по умолчанию
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Catalog/currency>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Структура ответа
+
+| Key          | Type      | Description
+|--------------|-----------|------------
+| `code`       | `integer` | Код валюты
+| `letterCode` | `string`  | Буквенный код валюты
+| `name`       | `string`  | Наименование валюты
+| `symbol`     | `string`  | Символьный код валюты
+
+```json
+{
+  "code": 840,
+  "letterCode": "USD",
+  "name": "Доллар США",
+  "symbol": "USD"
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Акт сверки
+
+`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/CheckAccount>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                | Type      | Required | Description
+|--------------------|-----------|:--------:|------------
+| `startDate`        | `date`    |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
+| `endDate`          | `date`    |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
+
+Пример запроса
+
+```json
+{
+  "startDate": "2025-09-08T06:47:06.839Z",
+  "endDate": "2025-09-09T06:47:06.839Z"
+}
+```
+
+Структура ответа
+
+| Key                                       | Type     | Description
+|-------------------------------------------|----------|------------
+| `periodBegin`                             | `date`   | Дата начала периода 
+| `periodEnd`                               | `date`   | Дата окончания периода
+| `memberCode`                              | `long`   | Код эмитента
+| `memberName`                              | `string` | Наименование эмитента
+| `memberUnp`                               | `string` | УНП эмитента
+| `contractCode`                            | `long`   | Номер договора
+| `contractBeginDate`                       | `date`   | Дата старта договора
+| `contractName`                            | `string` | Наименование договора
+| `сontractUnp`                             | `string` | УНП договора
+| `checkAccountTableRowData`                | `array`  | Счета договора
+| `checkAccountTableRowData`/`documentDate` | `string` | Дата документа
+| `checkAccountTableRowData`/`description`  | `string` | Наименование документа
+| `checkAccountTableRowData`/`debet`        | `double` | Дебет
+| `checkAccountTableRowData`/`credit`       | `double` | Кредит
+
+Пример успешного ответа
+
+```json
+{
+  "periodBegin": "2025-09-08T11:02:28.062Z",
+  "periodEnd": "2025-09-08T11:02:28.062Z",
+  "memberCode": 0,
+  "memberName": "string",
+  "memberUnp": "string",
+  "contractCode": 0,
+  "contractBeginDate": "2025-09-08T11:02:28.062Z",
+  "contractName": "string",
+  "contractUnp": "string",
+  "checkAccountTableRowData": [
+    {
+      "documentDate": "string",
+      "description": "string",
+      "debet": 0,
+      "credit": 0
+    }
+  ]
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description |
+|------|-------------|
+| 200  | OK          |
+| 400  | Bad request |
+| 401  | Unauthorized |
+| 500  | Internal Server Error |
