@@ -78,35 +78,34 @@ HTTP статусы ответа
 
 Структура ответа
 
-| Key                   | Type      | Discription
-|-----------------------|-----------|-------------
-| `contrCode`           | `integer` | Номер договора
-| `cardCode`            | `integer` | Номер топливной карты
-| `monthNorm`           | `integer` | Месячная норма отпуска топлива
-| `dayNorm`             | `integer` | Дневная норма отпуска топлива в литрах
-| `dayNormAmount`       | `decimal` | Дневная норма в рублях
-| `oilGroupSet`         | `array`   | Массив разрешенных нефтепродуктов
-| `oilGroupSet`/`сode`  | `integer` | Код группы нефтепродуктов
-| `oilGroupSet`/`name`  | `string`  | Наименование группы нефтепродуктов
-| `transitFl`           | `boolean` | флаг разрешения отпуска по карте на транзитных АЗС (АЗС не принадлежащих ПОНу, с которым заключен договор)
-| `goodsFl`             | `boolean` | Флаг отпуска товаров (`false` - запрещено, `true` - разрешено)
-| `transitGoodsFl`      | `boolean` | Флаг разрешения отпуска товаров на транзитных АЗС (false - запрещено, true - разрешено)
-| `status`              | `enum`    | Статус топливной карты, `0` - работа по карте запрещена, `1` - работа по карте разрешена
-| `actionDate`          | `date`    | Cрок действия топливной карты
-| `division`            | `integer` | номер подразделения
-| `driver`              | `string`  | ФИО водителя
-| `carNum`              | `string`  | Государственный регистрационный знак автомобиля
-| `priority`            | `integer` | Приоритет карты при распределении денежных средств, когда последних не хватает на полную суточную норму договора. Сначала деньги распределяются на карты с большим приоритетом
-| `dosePermitted`       | `integer` | Разрешенная доза в литрах
-| `dosePermittedAmount` | `decimal` | Разрешенная доза в деньгах
-| `kapschCard`          | `boolean` | `true` - топливная карта является картой счета для BELTOLL, `false` - не является
-| `kapschContract`      | `boolean` | `true` - топливная карта является картой договора для BELTOLL, `false` - не является
-| `gasRemoteFill`       | `boolean` | Флаг удаленной заправки газом. `true` - разрешена, `false` - запрещена
-| `gasBottleVolume`     | `integer` | Объем газового баллона
-| `gasBottleExaminationDate` | `datetime` | Дата освидетельствования баллона
+| Key                            | Type       | Discription
+|--------------------------------|------------|-------------
+| `contrCode`                    | `integer`  | Номер договора
+| `cardCode`                     | `integer`  | Номер топливной карты
+| `monthNorm`                    | `integer`  | Месячная норма отпуска топлива
+| `dayNorm`                      | `integer`  | Дневная норма отпуска топлива в литрах
+| `dayNormAmount`                | `decimal`  | Дневная норма в рублях
+| `oilGroupSet`                  | `array`    | Массив разрешенных нефтепродуктов
+| `transitFl`                    | `boolean`  | флаг разрешения отпуска по карте на транзитных АЗС (АЗС не принадлежащих ПОНу, с которым заключен договор)
+| `goodsFl`                      | `boolean`  | Флаг отпуска товаров (`false` - запрещено, `true` - разрешено)
+| `transitGoodsFl`               | `boolean`  | Флаг разрешения отпуска товаров на транзитных АЗС (false - запрещено, true - разрешено)
+| `status`                       | `enum`     | Статус топливной карты, `0` - работа по карте запрещена, `1` - работа по карте разрешена
+| `actionDate`                   | `date`     | Cрок действия топливной карты
+| `division`                     | `integer`  | номер подразделения
+| `driver`                       | `string`   | ФИО водителя
+| `carNum`                       | `string`   | Государственный регистрационный знак автомобиля
+| `priority`                     | `integer`  | Приоритет карты при распределении денежных средств, когда последних не хватает на полную суточную норму договора. Сначала деньги распределяются на карты с большим приоритетом
+| `dosePermitted`                | `integer`  | Разрешенная доза в литрах
+| `dosePermittedAmount`          | `decimal`  | Разрешенная доза в деньгах
+| `kapschCard`                   | `boolean`  | `true` - топливная карта является картой счета для BELTOLL, `false` - не является
+| `kapschContract`               | `boolean`  | `true` - топливная карта является картой договора для BELTOLL, `false` - не является
+| `gasRemoteFill`                | `boolean`  | Флаг удаленной заправки газом. `true` - разрешена, `false` - запрещена
+| `gasBottleVolume`              | `integer`  | Объем газового баллона
+| `gasBottleExaminationDate`     | `datetime` | Дата освидетельствования баллона
 | `gasBottleNextExaminationDate` | `datetime` | Дата следующего освидетельствования баллона
-| `gasRulesAccepted`   | `boolean` | Флаг ознакомления с правилами
-| `pinCode`            | `integer` | Пинкод карты
+| `gasRulesAccepted`             | `boolean`  | Флаг ознакомления с правилами
+| `pinCode`                      | `integer`  | Пинкод карты
+| `roadTollsFl`                  | `boolean`  | Флаг оплаты дорог
 
 Кодировка группы нефтепродуктов ключа `oilGroupSet`
 | Бит | Группа
@@ -139,25 +138,39 @@ HTTP статусы ответа
                 "name": "ДТ"
             }
         ],
-        "transitFl": false,
-        "goodsFl": true,
-        "transitGoodsFl": true,
-        "status": 1,
-        "actionDate": "2023-01-11T00:00:00",
-        "division": 0,
-        "driver": "",
-        "carNum": "",
-        "priority": 0,
-        "dosePermitted": 9,
-        "dosePermittedAmount": 16.02,
-        "kapschCard": false,
-        "kapschContract": false,
-        "gasRemoteFill" : true,
-        "gasBottleVolume": 45,
-        "gasBottleExaminationDate": "2023-01-11T00:00:00",
-        "gasBottleNextExaminationDate":  "2023-01-11T00:00:00",
-        "gasRulesAccepted": true,
-        "pinCode": 1234 
+      "transitFl": true,
+      "goodsFl": true,
+      "transitGoodsFl": true,
+      "status": 0,
+      "actionDate": "2025-09-08T05:32:15.191Z",
+      "division": 0,
+      "driver": "string",
+      "carNum": "string",
+      "priority": 0,
+      "dosePermitted": 0,
+      "dosePermittedAmount": 0,
+      "kapschCard": true,
+      "kapschContract": true,
+      "gasRemoteFill": true,
+      "gasBottleVolume": 0,
+      "gasBottleExaminationDate": "2025-09-08T05:32:15.191Z",
+      "gasBottleNextExaminationDate": "2025-09-08T05:32:15.191Z",
+      "gasRulesAccepted": true,
+      "cardType": 0,
+      "pinCode": "string",
+      "vehicleParams": [
+        {
+          "cardCode": 0,
+          "vehicleId": 0,
+          "number": "string",
+          "model": "string",
+          "gasBottleVolume": 0,
+          "gasBottleExaminationDate": "2025-09-08T05:32:15.191Z",
+          "gasBottleNextExaminationDate": "2025-09-08T05:32:15.191Z",
+          "viewInReportFl": true
+        }
+      ],
+      "roadTollsFl": true
     }
 ]
 ```
@@ -181,36 +194,47 @@ HTTP статусы ответа
 
 Структура запроса
 
-| Key                   | Type      | Required | Discription
-|-----------------------|-----------|:--------:|------------
-| `contrCode`           | `integer` |   Yes    | Номер договора
-| `cardCode`            | `integer` |   Yes    | Номер топливной карты
-| `monthNorm`           | `integer` |   Yes    | Месячная норма отпуска топлива
-| `dayNorm`             | `integer` |   Yes    | Дневная норма отпуска топлива в литрах
-| `dayNormAmount`       | `decimal` |   Yes    | Дневная норма в рублях
-| `oilGroupSet`         | `integer` |   Yes    | Набор групп нефтепродуктов (см. примечание)
-| `oilGroupSet`         | `array`   |   Yes    | Массив разрешенных нефтепродуктов
-| `oilGroupSet`/`сode`  | `integer` |   Yes    | Код группы нефтепродуктов
-| `oilGroupSet`/`name`  | `string`  |   Yes    | Наименование группы нефтепродуктов
-| `transitFl`           | `boolean` |   Yes    | флаг разрешения отпуска по топливной карте на транзитных АЗС (АЗС не принадлежащих ПОНу, с которым заключен договор)
-| `goodsFl`             | `boolean` |   Yes    | Флаг отпуска товаров (`false` - запрещено, `true` - разрешено)
-| `transitGoodsFl`      | `boolean` |   Yes    | Флаг разрешения отпуска товаров на транзитных АЗС (`false` - запрещено, `true` - разрешено)
-| `status`              | `enum`    |   Yes    | Статус топливной карты, `0` - работа по топливноой карте запрещена, `1` - работа по карте разрешена
-| `actionDate`          | `date`    |   Yes    | Cрок действия топливной карты
-| `division`            | `integer` |   Yes    | Номер подразделения
-| `driver`              | `string`  |   Yes    | ФИО водителя
-| `carNum`              | `string`  |   Yes    | Государственный регистрационный знак автомобиля
-| `priority`            | `integer` |   Yes    | Приоритет топливной карты при распределении денежных средств, когда последних не хватает на полную суточную норму договора. Сначала деньги распределяются на карты с большим приоритетом
-| `dosePermitted`       | `integer` |   Yes    | Разрешенная доза в литрах
-| `dosePermittedAmount` | `decimal` |   Yes    | Разрешенная доза в деньгах
-| `kapschCard`          | `boolean` |   Yes    | `true` - топливная карта карта является картой счета для BELTOLL, `false` - не является
-| `kapschContract`      | `boolean` |   Yes    | `true` - топливная карта является картой договора для BELTOLL, `false` - не является
-| `user`                | `string`  |   Yes    | Логин пользователя, который сделал изменения в картах
-| `gasRemoteFill`       | `boolean` | Yes | Флаг удаленной заправки газом. `true` - разрешена, `false` - запрещена
-| `gasBottleVolume`     | `integer` | Yes | Объем газового баллона
-| `gasBottleExaminationDate` | `datetime` | Yes | Дата освидетельствования баллона
-| `gasBottleNextExaminationDate` | `datetime` | Yes | Дата следующего освидетельствования баллона
-| `gasRulesAccepted`   | `boolean` | Yes | Флаг ознакомления с правилами
+| Key                                            | Type       | Required | Discription
+|------------------------------------------------|------------|:--------:|------------
+| `contrCode`                                    | `integer`  |   Yes    | Номер договора
+| `cardCode`                                     | `integer`  |   Yes    | Номер топливной карты
+| `monthNorm`                                    | `integer`  |   Yes    | Месячная норма отпуска топлива
+| `dayNorm`                                      | `integer`  |   Yes    | Дневная норма отпуска топлива в литрах
+| `dayNormAmount`                                | `decimal`  |   Yes    | Дневная норма в рублях
+| `oilGroupSet`                                  | `integer`  |   Yes    | Набор групп нефтепродуктов (см. примечание)
+| `oilGroupSet`                                  | `array`    |   Yes    | Массив разрешенных нефтепродуктов
+| `oilGroupSet`/`сode`                           | `integer`  |   Yes    | Код группы нефтепродуктов
+| `oilGroupSet`/`name`                           | `string`   |   Yes    | Наименование группы нефтепродуктов
+| `transitFl`                                    | `boolean`  |   Yes    | флаг разрешения отпуска по топливной карте на транзитных АЗС (АЗС не принадлежащих ПОНу, с которым заключен договор)
+| `goodsFl`                                      | `boolean`  |   Yes    | Флаг отпуска товаров (`false` - запрещено, `true` - разрешено)
+| `transitGoodsFl`                               | `boolean`  |   Yes    | Флаг разрешения отпуска товаров на транзитных АЗС (`false` - запрещено, `true` - разрешено)
+| `status`                                       | `enum`     |   Yes    | Статус топливной карты, `0` - работа по топливноой карте запрещена, `1` - работа по карте разрешена
+| `actionDate`                                   | `date`     |   Yes    | Cрок действия топливной карты
+| `division`                                     | `integer`  |   Yes    | Номер подразделения
+| `driver`                                       | `string`   |   Yes    | ФИО водителя
+| `carNum`                                       | `string`   |   Yes    | Государственный регистрационный знак автомобиля
+| `priority`                                     | `integer`  |   Yes    | Приоритет топливной карты при распределении денежных средств, когда последних не хватает на полную суточную норму договора. Сначала деньги распределяются на карты с большим приоритетом
+| `dosePermitted`                                | `integer`  |   Yes    | Разрешенная доза в литрах
+| `dosePermittedAmount`                          | `decimal`  |   Yes    | Разрешенная доза в деньгах
+| `kapschCard`                                   | `boolean`  |   Yes    | `true` - топливная карта карта является картой счета для BELTOLL, `false` - не является
+| `kapschContract`                               | `boolean`  |   Yes    | `true` - топливная карта является картой договора для BELTOLL, `false` - не является
+| `user`                                         | `string`   |   Yes    | Логин пользователя, который сделал изменения в картах
+| `gasRemoteFill`                                | `boolean`  |   Yes    | Флаг удаленной заправки газом. `true` - разрешена, `false` - запрещена
+| `gasBottleVolume`                              | `integer`  |   Yes    | Объем газового баллона
+| `gasBottleExaminationDate`                     | `datetime` |   Yes    | Дата освидетельствования баллона
+| `gasBottleNextExaminationDate`                 | `datetime` |   Yes    | Дата следующего освидетельствования баллона
+| `gasRulesAccepted`                             | `boolean`  |   Yes    | Флаг ознакомления с правилами
+| `cardType`                                     | `integer`  |    No    | Тип карты
+| `pinCode`                                      | `string`   |    No    | Пинкод карты
+| `vehicleParams`                                | `array`    |    No    | Параметры автомобилей
+| `vehicleParams`/`cardCode`                     | `integer`  |    No    | Номер карты
+| `vehicleParams`/`vehicleId`                    | `long`     |   Yes    | Номер автомобиля
+| `vehicleParams`/`number`                       | `string`   |    No    | Номер автомобиля
+| `vehicleParams`/`model`                        | `string`   |    No    | Водитель
+| `vehicleParams`/`gasBottleVolume`              | `integer`  |    No    | объем газового баллона
+| `vehicleParams`/`gasBottleExaminationDate`     | `date`     |    No    | дата освидетельствования баллона
+| `vehicleParams`/`gasBottleNextExaminationDate` | `date`     |    No    | дата последующего освидетельствования баллона
+| `vehicleParams`/`viewInReportFl`               | `boolen`   |   Yes    | отражать в отчетах номер авто
 
 Кодировка группы нефтепродуктов в поле `oilGroupSet`
 | Бит | Группа
@@ -243,24 +267,39 @@ HTTP статусы ответа
                 "name": "ДТ"
             }
         ],
-        "transitFl": true,
-        "goodsFl": true,
-        "transitGoodsFl": true,
-        "status": 1,
-        "actionDate": "2070-01-01T00:00:00",
-        "division": 0,
-        "driver": "",
-        "carNum": "",
-        "priority": 0,
-        "dosePermitted": 100,
-        "dosePermittedAmount": 175,
-        "kapschCard": false,
-        "kapschContract": false,
-        "gasRemoteFill" : true,
-        "gasBottleVolume": 45,
-        "gasBottleExaminationDate": "2023-01-11T00:00:00",
-        "gasBottleNextExaminationDate":  "2023-01-11T00:00:00",
-        "gasRulesAccepted": true
+      "transitFl": true,
+      "goodsFl": true,
+      "transitGoodsFl": true,
+      "status": 0,
+      "actionDate": "2025-09-08T05:33:58.226Z",
+      "division": 0,
+      "driver": "string",
+      "carNum": "string",
+      "priority": 0,
+      "dosePermitted": 0,
+      "dosePermittedAmount": 0,
+      "kapschCard": true,
+      "kapschContract": true,
+      "gasRemoteFill": true,
+      "gasBottleVolume": 0,
+      "gasBottleExaminationDate": "2025-09-08T05:33:58.226Z",
+      "gasBottleNextExaminationDate": "2025-09-08T05:33:58.226Z",
+      "gasRulesAccepted": true,
+      "cardType": 0,
+      "pinCode": "string",
+      "vehicleParams": [
+        {
+          "cardCode": 0,
+          "vehicleId": 0,
+          "number": "string",
+          "model": "string",
+          "gasBottleVolume": 0,
+          "gasBottleExaminationDate": "2025-09-08T05:33:58.226Z",
+          "gasBottleNextExaminationDate": "2025-09-08T05:33:58.226Z",
+          "viewInReportFl": true
+        }
+      ],
+      "roadTollsFl": true
     }
 ]
 ```
@@ -287,29 +326,33 @@ HTTP статусы ответа
 
 Структура ответа
 
-| Key                  | Type      | Discription
-|----------------------|-----------|------------
-| `loanFlag`           | `boolean` | Признак наличия коммерческого займа `false` - нет, `true` - есть
-| `contractIssuerId`   | `integer` | Код эмитента
-| `clientName`         | `string`  | Наименование предприятия
-| `contractNumber`     | `integer` | Номер договора
-| `summa`              | `decimal` | Остаток суммы на договоре
-| `date`               | `date`    | Время последнего пересчета остатка
-| `unn`                | `integer` | УНН
-| `effectPrice`        | `decimal` | Сумма средств, при которой все разрешенные карты могут заправиться на 100% дневной нормы
-| `phone`              | `string`  | Номер телефона
-| `internetChangeCard` | `boolean` | Флаг разрешения менять свойства топливных карт в кабинете `false` - нельзя, `true` - можно
-| `paymentPlatonFlag`  | `boolean` | Флаг разрешения осуществлять платежи в системе Платон `false` - нельзя, `true` - можно
-| `minimumBalanceNoticeFlag` | `boolean` | Признак уведомления о минимальном балансе
-| `minimumBalanceSumm`       | `double`  | Сумма минимального баланса
-| `mDMPartnerCode`    | `string`  | Код МДМ партнера
-| `virtualCardCost`   | `decimal` | Стоимость виртуальной карты
-| `expressFlag`       | `integer` | Признак использования экспресс-договора. `0` - не используется, `1` - используется
-| `isElectronicCheck` | `boolean` | Cогласие на получение электронных чеков
+| Key                         | Type      | Discription
+|-----------------------------|-----------|------------
+| `loanFlag`                  | `boolean` | Признак наличия коммерческого займа `false` - нет, `true` - есть
+| `contractIssuerId`          | `integer` | Код эмитента
+| `clientName`                | `string`  | Наименование предприятия
+| `contractNumber`            | `integer` | Номер договора
+| `summa`                     | `decimal` | Остаток суммы на договоре
+| `date`                      | `date`    | Время последнего пересчета остатка
+| `unn`                       | `integer` | УНН
+| `effectPrice`               | `decimal` | Сумма средств, при которой все разрешенные карты могут заправиться на 100% дневной нормы
+| `phone`                     | `string`  | Номер телефона
+| `internetChangeCard`        | `boolean` | Флаг разрешения менять свойства топливных карт в кабинете `false` - нельзя, `true` - можно
+| `paymentPlatonFlag`         | `boolean` | Флаг разрешения осуществлять платежи в системе Платон `false` - нельзя, `true` - можно
+| `minimumBalanceNoticeFlag`  | `boolean` | Признак уведомления о минимальном балансе
+| `minimumBalanceSumm`        | `double`  | Сумма минимального баланса
+| `mDMPartnerCode`            | `string`  | Код МДМ партнера
+| `virtualCardCost`           | `decimal` | Стоимость виртуальной карты
+| `expressFlag`               | `integer` | Признак использования экспресс-договора. `0` - не используется, `1` - используется
+| `isElectronicCheck`         | `boolean` | Cогласие на получение электронных чеков
 | `noReminderElectronicCheck` | `boolean` | флаг напоминания вывода уведомлений о согласии на электронные чеки
-| `gasRemoteFill`     | `boolean` | флаг наличия доп. соглашения на самостоятельную заправку газом
-| `statusCode`        | `integer` | Код состояния договора
-| `isGasEquipment`    | `boolean` | Флаг наличия газобаллонного оборудования. `true` - есть, `false` - нет
+| `gasRemoteFill`             | `boolean` | флаг наличия доп. соглашения на самостоятельную заправку газом
+| `statusCode`                | `integer` | Код состояния договора
+| `isGasEquipment`            | `boolean` | Флаг наличия газобаллонного оборудования. `true` - есть, `false` - нет
+| `isBudgetary`               | `boolean` | Признак бюджетой организации. `true` - да, `false` - нет
+| `isEditFlagElectronicCheck` | `boolean` | Флаг изменения флага согласия на электронные чеки. `true` - да, `false` - нет
+| `emitentName`               | `string`  | Наименование эмитента
+| `emitentEmail`               | `string`  | Email эмитента
 
 Пример успешного ответа
 
@@ -335,7 +378,11 @@ HTTP статусы ответа
     "noReminderElectronicCheck": true,
     "gasRemoteFill": true,
     "statusCode": 1,
-    "isGasEquipment": true
+    "isGasEquipment": true,
+    "isBudgetary": true,
+    "isEditFlagElectronicCheck": true,
+    "emitentName": "string",
+    "emitentEmail": "string"
 }
 ```
 
