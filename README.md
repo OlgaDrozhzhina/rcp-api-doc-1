@@ -1129,7 +1129,7 @@ HTTP статусы ответа
 | `smallName`    | `string`  | Краткое название нефтепродукта
 | `actualFlag`   | `integer` | Флаг атуильности
 | `сodeOilGroup` | `integer` | Код группы нефтепродукта
-| `nameOilGroup` | `strong`  | Наименование группы нефтепродукта
+| `nameOilGroup` | `string`  | Наименование группы нефтепродукта
 
 HTTP статусы ответа
 
@@ -1380,3 +1380,290 @@ HTTP статусы ответа
 | 401  | Unauthorized
 | 500  | Internal Server Error
 
+## Отправка измененных настроек авто
+
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/contractVehicles>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                            | Type      | Required | Discription
+|--------------------------------|-----------|:--------:|------------
+| `id`                           | `long`    |   Yes    | Номер карты
+| `contrCode`                    | `integer` |   Yes    | Номер карты
+| `number`                       | `string`  |   Yes    | Номер автомобиля
+| `model`                        | `string`  |   Yes    | Водитель
+| `gasBottleVolume`              | `integer` |    No    | Объем газового баллона
+| `gasBottleExaminationDate`     | `date`    |    No    | Дата освидетельствования баллона
+| `gasBottleNextExaminationDate` | `date`    |    No    | Дата последующего освидетельствования баллона
+| `active`                       | `boolen`  |   Yes    | Флаг разрешения заправки авто по карте
+| `vehicleParams`                | `array`   |   Yes    | Параметры автомобилей
+| `vehicleParams`/`cardCode`                     | `string`  | Номер карты
+| `vehicleParams`/`vehicleId`                    | `decimal` | Номер автомобиля
+| `vehicleParams`/`number`                       | `decimal` | Номер автомобиля
+| `vehicleParams`/`model`                        | `string`  | Водитель
+| `vehicleParams`/`gasBottleVolume`              | `integer` | Объем газового баллона
+| `vehicleParams`/`gasBottleExaminationDate`     | `date`    | Дата освидетельствования баллона
+| `vehicleParams`/`gasBottleNextExaminationDate` | `date`    | Дата последующего освидетельствования баллона
+| `vehicleParams`/`viewInReportFl`               | `boolean` | Отражать в отчетах номер авто
+
+Пример запроса
+
+```json
+[
+  {
+    "id": 0,
+    "contrCode": 0,
+    "number": "string",
+    "model": "string",
+    "gasBottleVolume": 0,
+    "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+    "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+    "active": true,
+    "vehicleParams": [
+      {
+        "cardCode": 0,
+        "vehicleId": 0,
+        "number": "string",
+        "model": "string",
+        "gasBottleVolume": 0,
+        "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+        "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+        "viewInReportFl": true
+      }
+    ]
+  }
+]
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+## Добавление настроек авто
+
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/createVehicle>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                            | Type      | Required | Discription
+|--------------------------------|-----------|:--------:|------------
+| `id`                           | `long`    |   Yes    | Номер карты
+| `contrCode`                    | `integer` |   Yes    | Номер карты
+| `number`                       | `string`  |   Yes    | Номер автомобиля
+| `model`                        | `string`  |   Yes    | Водитель
+| `gasBottleVolume`              | `integer` |    No    | Объем газового баллона
+| `gasBottleExaminationDate`     | `date`    |    No    | Дата освидетельствования баллона
+| `gasBottleNextExaminationDate` | `date`    |    No    | Дата последующего освидетельствования баллона
+| `active`                       | `boolen`  |   Yes    | Флаг разрешения заправки авто по карте
+| `vehicleParams`                | `array`   |   Yes    | Параметры автомобилей
+| `vehicleParams`/`cardCode`                     | `string`  | Номер карты
+| `vehicleParams`/`vehicleId`                    | `decimal` | Номер автомобиля
+| `vehicleParams`/`number`                       | `decimal` | Номер автомобиля
+| `vehicleParams`/`model`                        | `string`  | Водитель
+| `vehicleParams`/`gasBottleVolume`              | `integer` | Объем газового баллона
+| `vehicleParams`/`gasBottleExaminationDate`     | `date`    | Дата освидетельствования баллона
+| `vehicleParams`/`gasBottleNextExaminationDate` | `date`    | Дата последующего освидетельствования баллона
+| `vehicleParams`/`viewInReportFl`               | `boolean` | Отражать в отчетах номер авто
+
+Пример запроса
+
+```json
+[
+  {
+    "id": 0,
+    "contrCode": 0,
+    "number": "string",
+    "model": "string",
+    "gasBottleVolume": 0,
+    "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+    "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+    "active": true,
+    "vehicleParams": [
+      {
+        "cardCode": 0,
+        "vehicleId": 0,
+        "number": "string",
+        "model": "string",
+        "gasBottleVolume": 0,
+        "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+        "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+        "viewInReportFl": true
+      }
+    ]
+  }
+]
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+## Добавление настроек авто
+
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/deleteVehicle>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                            | Type      | Required | Discription
+|--------------------------------|-----------|:--------:|------------
+| `id`                           | `long`    |   Yes    | Номер карты
+| `contrCode`                    | `integer` |   Yes    | Номер карты
+| `number`                       | `string`  |   Yes    | Номер автомобиля
+| `model`                        | `string`  |   Yes    | Водитель
+| `gasBottleVolume`              | `integer` |    No    | Объем газового баллона
+| `gasBottleExaminationDate`     | `date`    |    No    | Дата освидетельствования баллона
+| `gasBottleNextExaminationDate` | `date`    |    No    | Дата последующего освидетельствования баллона
+| `active`                       | `boolen`  |   Yes    | Флаг разрешения заправки авто по карте
+| `vehicleParams`                | `array`   |   Yes    | Параметры автомобилей
+| `vehicleParams`/`cardCode`                     | `string`  | Номер карты
+| `vehicleParams`/`vehicleId`                    | `decimal` | Номер автомобиля
+| `vehicleParams`/`number`                       | `decimal` | Номер автомобиля
+| `vehicleParams`/`model`                        | `string`  | Водитель
+| `vehicleParams`/`gasBottleVolume`              | `integer` | Объем газового баллона
+| `vehicleParams`/`gasBottleExaminationDate`     | `date`    | Дата освидетельствования баллона
+| `vehicleParams`/`gasBottleNextExaminationDate` | `date`    | Дата последующего освидетельствования баллона
+| `vehicleParams`/`viewInReportFl`               | `boolean` | Отражать в отчетах номер авто
+
+Пример запроса
+
+```json
+[
+  {
+    "id": 0,
+    "contrCode": 0,
+    "number": "string",
+    "model": "string",
+    "gasBottleVolume": 0,
+    "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+    "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+    "active": false,
+    "vehicleParams": [
+      {
+        "cardCode": 0,
+        "vehicleId": 0,
+        "number": "string",
+        "model": "string",
+        "gasBottleVolume": 0,
+        "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+        "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+        "viewInReportFl": true
+      }
+    ]
+  }
+]
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Получить информацию о баннере
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/banners>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Структура ответа
+
+| Key             | Type      | Description
+|-----------------|-----------|------------
+| `doseForPeriod` | `decimal` | Доза за период
+| `benefit`       | `decimal` | Выгода
+| `summForPeriod` | `decimal` | Сумма за период
+| `periodBegin`   | `date`    | Начало периода
+| `periodEnd`     | `date`    | Конец периода
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+## Получить информацию о баннере
+
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/banners>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                | Type      | Required | Discription
+|--------------------|-----------|:--------:|------------
+| `contractId`       | `integer` |    No    | Номер договора
+| `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
+| `viewDate`         | `date`    |    No    | Дата отображения
+
+Пример запроса
+
+```json
+[
+  {
+    "id": 0,
+    "contrCode": 0,
+    "number": "string",
+    "model": "string",
+    "gasBottleVolume": 0,
+    "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+    "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+    "active": true,
+    "vehicleParams": [
+      {
+        "cardCode": 0,
+        "vehicleId": 0,
+        "number": "string",
+        "model": "string",
+        "gasBottleVolume": 0,
+        "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
+        "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
+        "viewInReportFl": true
+      }
+    ]
+  }
+]
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
