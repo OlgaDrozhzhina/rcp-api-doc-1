@@ -1845,3 +1845,98 @@ HTTP статусы ответа
 | 400  | Bad request |
 | 401  | Unauthorized |
 | 500  | Internal Server Error |
+
+### Получить шаблон договора
+
+`POST`: <https://ssl.beloil.by/rcp/i/api/v2/ContractTemplate>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key     | Type     | Required | Description
+|---------|----------|:--------:|------------
+| `name`  | `string` |   Yes    | Наименование
+| `value` | `string` |   Yes    | Значение
+
+Пример запроса
+
+```json
+[
+  {
+    "name": "string",
+    "value": "string"
+  }
+]
+```
+
+Структура ответа
+
+| Key            | Type      | Description
+|----------------|-----------|------------
+| `templateType` | `integer` | Тип шаблона
+| `fileName`     | `string`  | Имя файла
+| `text`         | `string`  | Текст шаблона
+| `binaryData`   | `bytes`   | Шаблон
+
+Пример успешного ответа
+
+```json
+{
+  "templateType": 0,
+  "fileName": "string",
+  "text": "string",
+  "binaryData": "string"
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description |
+|------|-------------|
+| 200  | OK          |
+| 400  | Bad request |
+| 401  | Unauthorized |
+| 500  | Internal Server Error |
+
+### Акт сверки. Процедура обновления флага.
+
+`POST`: <https://ssl.beloil.by/rcp/i/api/v2/ElectronicCheck>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key                         | Type      | Required | Description
+|-----------------------------|-----------|:--------:|------------
+| `isElectronicCheck`         | `integer` |   Yes    | Флаг о согласии на электронные чеки
+| `noReminderElectronicCheck` | `integer` |   Yes    | Флаг напоминания
+
+Пример запроса
+
+```json
+{
+  "isElectronicCheck": 0,
+  "noReminderElectronicCheck": 0
+}
+```
+
+Структура ответа
+
+int
+
+HTTP статусы ответа
+
+| Code | Description |
+|------|-------------|
+| 200  | OK          |
+| 400  | Bad request |
+| 401  | Unauthorized |
+| 500  | Internal Server Error |
+
