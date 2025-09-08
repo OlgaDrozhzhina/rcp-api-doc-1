@@ -69,7 +69,7 @@ HTTP статусы ответа
 
 ## Свойства топливных карт
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/cards>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/cards>
 
 Заголовки
 
@@ -185,7 +185,7 @@ HTTP статусы ответа
 
 ## Измение свойств карт
 
-`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/cards>
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/cards>
 
 Заголовки
 
@@ -317,7 +317,7 @@ HTTP статусы ответа
 
 ### Баланс по договору
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/balance>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/balance>
 
 Заголовки  
 
@@ -397,7 +397,7 @@ HTTP статусы ответа
 
 ### Баланс по договору без подсчета сумм
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/balanceLight>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/balanceLight>
 
 Заголовки
 
@@ -477,7 +477,7 @@ HTTP статусы ответа
 
 ### Пооперационный отчет
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/operational>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/operational>
 
 Заголовки
 
@@ -644,7 +644,7 @@ HTTP статусы ответа
 
 ### Пооперационный отчет суммарный по типам ТМЦУ
 
-`POST` <https://ssl.beloil.by/rcp/i/api/v2/Contract/operationalSum>  
+`POST` <https://ssl.beloil.by/rcp/i/api/v3/Contract/operationalSum>  
 
 Заголовки
 
@@ -945,7 +945,7 @@ HTTP статусы ответа
 
 ### Сверка расчетов
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/recon>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/recon>
 
 Заголовки
 
@@ -1052,7 +1052,7 @@ HTTP статусы ответа
 
 ### Цены нефтепродуктов
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/oilPrices>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/oilPrices>
 
 Заголовки
 
@@ -1077,7 +1077,7 @@ HTTP статусы ответа
 
 ### Список карт
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/cardlist>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/cardlist>
 
 Заголовки
 
@@ -1115,7 +1115,7 @@ HTTP статусы ответа
 
 ### Получить справочник нефтепродуктов
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/oil>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/oil>
 
 Заголовки
 
@@ -1141,7 +1141,7 @@ HTTP статусы ответа
 
 ### Получить список групп нефтепродуктов
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/OilGroup>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/OilGroup>
 
 Заголовки
 
@@ -1164,7 +1164,7 @@ HTTP статусы ответа
 
 ### Коммерческий заем
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/commercial>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/commercial>
 
 Заголовки
 
@@ -1237,7 +1237,7 @@ HTTP статусы ответа
 
 ### Получить условия договора
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/terms>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/terms>
 
 Заголовки
 
@@ -1337,7 +1337,7 @@ HTTP статусы ответа
 
 ### Получить транспортные средства договора
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/contractVehicles>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/contractVehicles>
 
 Заголовки
 
@@ -1405,7 +1405,7 @@ HTTP статусы ответа
 
 ## Отправка измененных настроек авто
 
-`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/contractVehicles>
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/contractVehicles>
 
 Заголовки
 
@@ -1474,7 +1474,7 @@ HTTP статусы ответа
 
 ## Добавление настроек авто
 
-`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/createVehicle>
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/createVehicle>
 
 Заголовки
 
@@ -1543,7 +1543,7 @@ HTTP статусы ответа
 
 ## Добавление настроек авто
 
-`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/deleteVehicle>
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/deleteVehicle>
 
 Заголовки
 
@@ -1612,7 +1612,7 @@ HTTP статусы ответа
 
 ### Получить информацию о баннере
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/banners>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/banners>
 
 Заголовки
 
@@ -1651,7 +1651,7 @@ HTTP статусы ответа
 
 ## Получить информацию о баннере
 
-`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/banners>
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/banners>
 
 Заголовки
 
@@ -1677,7 +1677,7 @@ HTTP статусы ответа
 
 ### AcceptanceCertificate document
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Acceptance>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Acceptance>
 
 Заголовки
 
@@ -1705,7 +1705,7 @@ HTTP статусы ответа
 
 ### AcceptanceCertificate. Get filename list.
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/AcceptanceList>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/AcceptanceList>
 
 Заголовки
 
@@ -1732,7 +1732,7 @@ HTTP статусы ответа
 
 ### Получить опции настроек по умолчанию
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Catalog/options>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Catalog/options>
 
 Заголовки
 
@@ -1760,7 +1760,7 @@ HTTP статусы ответа
 
 ### Получить информацию о валюте по умолчанию
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Catalog/currency>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Catalog/currency>
 
 Заголовки
 
@@ -1794,7 +1794,7 @@ HTTP статусы ответа
 
 ### Акт сверки
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/CheckAccount>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/CheckAccount>
 
 Заголовки
 
@@ -1871,7 +1871,7 @@ HTTP статусы ответа
 
 ### Получить шаблон договора
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/ContractTemplate>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/ContractTemplate>
 
 Заголовки
 
@@ -1927,7 +1927,7 @@ HTTP статусы ответа
 
 ### Акт сверки. Процедура обновления флага.
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/ElectronicCheck>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/ElectronicCheck>
 
 Заголовки
 
@@ -1965,7 +1965,7 @@ HTTP статусы ответа
 
 ### Сохранение настроек оповещения о минимальной сумме на счете.
 
-`PUT`: <https://ssl.beloil.by/rcp/i/api/v2/NoticeInfo>
+`PUT`: <https://ssl.beloil.by/rcp/i/api/v3/Contract/NoticeInfo>
 
 Заголовки
 
@@ -2007,7 +2007,7 @@ HTTP статусы ответа
 
 ### Движение денежных средств по договору
 
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/PaymentReport>
+`POST`: <https://ssl.beloil.by/rcp/i/api/v3/PaymentReport>
 
 Заголовки
 
@@ -2080,7 +2080,7 @@ HTTP статусы ответа
 ### doctype - тип документа. 1 - НТУ-АЗС; 2 - Количество и стоимость отпущенный нефлепродуктов, товаров и услуг   
 ### date - дата отчета в формате ггггмм
 
-`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Report>
+`GET`: <https://ssl.beloil.by/rcp/i/api/v3/Report>
 
 Заголовки
 
