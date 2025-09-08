@@ -352,7 +352,7 @@ HTTP статусы ответа
 | `isBudgetary`               | `boolean` | Признак бюджетой организации. `true` - да, `false` - нет
 | `isEditFlagElectronicCheck` | `boolean` | Флаг изменения флага согласия на электронные чеки. `true` - да, `false` - нет
 | `emitentName`               | `string`  | Наименование эмитента
-| `emitentEmail`               | `string`  | Email эмитента
+| `emitentEmail`              | `string`  | Email эмитента
 
 Пример успешного ответа
 
@@ -406,29 +406,33 @@ HTTP статусы ответа
 
 Структура ответа
 
-| Key                  | Type      | Discription
-|----------------------|-----------|------------
-| `loanFlag`           | `boolean` | Флаг наличия коммерческого займа `false` - нет, `true` - есть
-| `contractIssuerId`   | `integer` | Код эмитента
-| `clientName`         | `string`  | Наименование предприятия
-| `contractNumber`     | `integer` | Номер договора
-| `summa`              | `decimal` | Остаток суммы на договоре
-| `date`               | `date`    | Время последнего пересчета остатка
-| `unn`                | `integer` | УНН
-| `effectPrice`        | `decimal` | Сумма средств, при которой все разрешенные карты могут заправиться на 100% дневной нормы
-| `phone`              | `string`  | Номер телефона
-| `internetChangeCard` | `boolean` | Флаг разрешения менять свойства карт в кабинете `false` - нельзя, `true` - можно
-| `paymentPlatonFlag`  | `boolean` | Флаг разрешения осуществлять платежи в системе Платон `false` - нельзя, `true` - можно
-| `minimumBalanceNoticeFlag` | `boolean` | Признак уведомления о минимальном балансе
-| `minimumBalanceSumm` | `double` | Сумма минимального баланса
-| `mDMPartnerCode` | `string` | Код МДМ партнера
-| `virtualCardCost` | `decimal` | Стоимость виртуальной карты
-| `expressFlag` | `int` | Признак использования экспресс-договора. `0` - не используется, `1` - используется
-| `isElectronicCheck` | `boolean` | Cогласие на получение электронных чеков
+| Key                         | Type      | Discription
+|-----------------------------|-----------|------------
+| `loanFlag`                  | `boolean` | Флаг наличия коммерческого займа `false` - нет, `true` - есть
+| `contractIssuerId`          | `integer` | Код эмитента
+| `clientName`                | `string`  | Наименование предприятия
+| `contractNumber`            | `integer` | Номер договора
+| `summa`                     | `decimal` | Остаток суммы на договоре
+| `date`                      | `date`    | Время последнего пересчета остатка
+| `unn`                       | `integer` | УНН
+| `effectPrice`               | `decimal` | Сумма средств, при которой все разрешенные карты могут заправиться на 100% дневной нормы
+| `phone`                     | `string`  | Номер телефона
+| `internetChangeCard`        | `boolean` | Флаг разрешения менять свойства карт в кабинете `false` - нельзя, `true` - можно
+| `paymentPlatonFlag`         | `boolean` | Флаг разрешения осуществлять платежи в системе Платон `false` - нельзя, `true` - можно
+| `minimumBalanceNoticeFlag`  | `boolean` | Признак уведомления о минимальном балансе
+| `minimumBalanceSumm`        | `double` | Сумма минимального баланса
+| `mDMPartnerCode`            | `string` | Код МДМ партнера
+| `virtualCardCost`           | `decimal` | Стоимость виртуальной карты
+| `expressFlag`               | `int` | Признак использования экспресс-договора. `0` - не используется, `1` - используется
+| `isElectronicCheck`         | `boolean` | Cогласие на получение электронных чеков
 | `noReminderElectronicCheck` | `boolean` | флаг напоминания вывода уведомлений о согласии на электронные чеки
-| `gasRemoteFill` | `boolean` | флаг наличия доп. соглашения на самостоятельную заправку газом
-| `statusCode` | `integer` | Код состояния договора
-| `isGasEquipment` | `boolean` | Флаг наличия газобаллонного оборудования. `true` - есть, `false` - нет
+| `gasRemoteFill`             | `boolean` | флаг наличия доп. соглашения на самостоятельную заправку газом
+| `statusCode`                | `integer` | Код состояния договора
+| `isGasEquipment`            | `boolean` | Флаг наличия газобаллонного оборудования. `true` - есть, `false` - нет
+| `isBudgetary`               | `boolean` | Признак бюджетой организации. `true` - да, `false` - нет
+| `isEditFlagElectronicCheck` | `boolean` | Флаг изменения флага согласия на электронные чеки. `true` - есть, `false` - нет
+| `emitentName`               | `string`  | Наименование эмитента
+| `emitentEmail`              | `string`  | Email эмитента
 
 Пример успешного ответа
 
@@ -454,7 +458,11 @@ HTTP статусы ответа
     "noReminderElectronicCheck": true,
     "gasRemoteFill": true,
     "statusCode": 1,
-    "isGasEquipment": true
+    "isGasEquipment": true,
+  "isBudgetary": true,
+  "isEditFlagElectronicCheck": true,
+  "emitentName": "string",
+  "emitentEmail": "string"
 }
 ```
 
@@ -478,27 +486,35 @@ HTTP статусы ответа
 
 Структура запроса
 
-| Key               | Type      | Required | Description
-|-------------------|-----------|:--------:|------------
-| `startDate`       | `date`    |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
-| `endDate`         | `date`    |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
-| `cardNumber`      | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем топливным картам договора
-| `subDivisnNumber` | `integer` |   Yes    | Номер подразделения. Если меньше нуля, тогда по всем подразделениям договора
-| `flChoice`        | `integer` |   Yes    | Опция выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` - оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
-| `AzsCode`         | `integer` |   Yes    | Номер АЗС. Значение `-1` - любой номер
-| `EmtCodeFrm`      | `integer` |   Yes    | Код эмитента. Значение `-1` - любой эмитент
+| Key                | Type      | Required | Description
+|--------------------|-----------|:--------:|------------
+| `startDate`        | `date`    |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
+| `endDate`          | `date`    |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
+| `cardNumber`       | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем топливным картам договора
+| `subDivisnNumber`  | `integer` |   Yes    | Номер подразделения. Если меньше нуля, тогда по всем подразделениям договора
+| `flChoice`         | `integer` |   Yes    | Опция выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` - оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
+| `AzsCode`          | `integer` |   Yes    | Номер АЗС. Значение `-1` - любой номер
+| `EmtCodeFrm`       | `integer` |   Yes    | Код эмитента. Значение `-1` - любой эмитент
+| `contractId`       | `integer` |   Yes    | Номер договора
+| `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
+| `discountCode`     | `integer` |   Yes    | Код скидки
+| `author`           | `string`  |    No    | Автор изменений
 
 Пример запроса
 
 ```json
 {
-    "startDate": "11-01-2019",
-    "endDate": "11-30-2020",
-    "cardNumber": 0,
-    "subDivisnNumber": -1,
-    "flChoice": 2,
-    "AzsCode" : -1,
-    "EmtCodeFrm": -1
+  "startDate": "2025-09-08T06:47:06.839Z",
+  "endDate": "2025-09-08T06:47:06.839Z",
+  "contractId": 0,
+  "contractIssuerId": 0,
+  "flChoice": 0,
+  "cardNumber": 0,
+  "subDivisnNumber": 0,
+  "discountCode": 0,
+  "author": "string",
+  "emtCodeFrm": 0,
+  "azsCode": 0
 }
 ```
 
@@ -637,13 +653,18 @@ HTTP статусы ответа
 
 Структура запроса
 
-| Key               | Type      | Required | Description
-|-------------------|-----------|:--------:|------------
-| `startDate`       | `date`    |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
-| `endDate`         | `date`    |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
-| `cardNumber`      | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем картам договора
-| `subDivisnNumber` | `integer` |   Yes    | Номер подразделения. Если значение меньше нуля, тогда отчет по всем подразделениям договора
-| `flChoice`        | `integer` |   Yes    | Параметр `FlChoice` - флаг выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` -  оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
+| Key                | Type      | Required | Description
+|--------------------|-----------|:--------:|------------
+| `startDate`        | `date`    |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
+| `endDate`          | `date`    |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
+| `contractId`       | `integer` |   Yes    | Номер договора
+| `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
+| `cardNumber`       | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем картам договора
+| `subDivisnNumber`  | `integer` |   Yes    | Номер подразделения. Если значение меньше нуля, тогда отчет по всем подразделениям договора
+| `flChoice`         | `integer` |   Yes    | Параметр `FlChoice` - флаг выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` -  оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
+| `author`           | `string`  |    No    | Автор изменений 
+| `emtCodeFrm`       | `integer` |    No    | Код эмитента, если меньше нуля, то по всем подразделениям
+| `azsCode`          | `integer` |    No    | Номер азс, если меньше нуля, то по всем подразделениям
 
 Пример запроса
 
@@ -937,13 +958,30 @@ HTTP статусы ответа
 |-------------|--------|:--------:|------------
 | `startDate` | `date` |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
 | `endDate`   | `date` |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
+| `contractId`       | `integer` |   Yes    | Номер договора
+| `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
+| `cardNumber`       | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем картам договора
+| `subDivisnNumber`  | `integer` |   Yes    | Номер подразделения. Если значение меньше нуля, тогда отчет по всем подразделениям договора
+| `flChoice`         | `integer` |   Yes    | Параметр `FlChoice` - флаг выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` -  оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
+| `author`           | `string`  |    No    | Автор изменений 
+| `emtCodeFrm`       | `integer` |    No    | Код эмитента, если меньше нуля, то по всем подразделениям
+| `azsCode`          | `integer` |    No    | Номер азс, если меньше нуля, то по всем подразделениям
 
 Пример запроса
 
 ```json
 {
-  "StartDate": "12-14-2019",
-  "EndDate": "12-16-2019"
+  "startDate": "2025-09-08T07:05:28.924Z",
+  "endDate": "2025-09-08T07:05:28.924Z",
+  "contractId": 0,
+  "contractIssuerId": 0,
+  "flChoice": 0,
+  "cardNumber": 0,
+  "subDivisnNumber": 0,
+  "discountCode": 0,
+  "author": "string",
+  "emtCodeFrm": 0,
+  "azsCode": 0
 }
 ```
 
@@ -1011,59 +1049,6 @@ HTTP статусы ответа
 | 401  | Unauthorized
 | 500  | Internal Server Error
 
-### Движение денежных средств
-
-`POST`: <https://ssl.beloil.by/rcp/i/api/v2/contract/PaymentReport>
-
-Заголовки
-
-* `Authorization`: `Bearer <токен>`
-* `Content-Type`: `application/json`
-
-Структура запроса
-
-| Key         | Type   | Required | Description
-|-------------|--------|:--------:|------------
-| `startDate` | `date` |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
-| `endDate`   | `date` |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
-
-Пример запроса
-
-```json
-{
-  "StartDate": "12-15-2020",
-  "EndDate": "12-25-2020"
-}
-```
-
-Структура ответа
-
-| Key           | Type      | Description
-|---------------|-----------|------------
-| `payDate`     | `date`    | Дата платежа
-| `payDocument` | `string`  | Номер документа выписки
-| `paySum`      | `decimal` | Сумма платежа
-
-Пример успешного ответа
-
-```json
-[
-    {
-        "payDate": "2019-11-05T00:00:00",
-        "payDocument": "8477",
-        "paySum": 20000.00
-    }
-]
-```
-
-HTTP статусы ответа
-
-| Code | Description
-|------|------------
-| 200  | OK
-| 400  | Bad request
-| 401  | Unauthorized
-| 500  | Internal Server Error
 
 ### Цены нефтепродуктов
 
@@ -1087,5 +1072,78 @@ HTTP статусы ответа
 | Code | Description
 |------|------------
 | 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Коммерческий заем
+
+`POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/commercial>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура запроса
+
+| Key         | Type   | Required | Description
+|-------------|--------|:--------:|------------
+| `startDate` | `date` |   Yes    | Дата начала периода в формате `MM-DD-YYYY`
+| `endDate`   | `date` |   Yes    | Дата конца периода в формате `MM-DD-YYYY`
+| `contractId`       | `integer` |   Yes    | Номер договора
+| `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
+| `cardNumber`       | `integer` |   Yes    | Номер топливной карты. Если значение меньше либо равно нулю, тогда отчет по всем картам договора
+| `subDivisnNumber`  | `integer` |   Yes    | Номер подразделения. Если значение меньше нуля, тогда отчет по всем подразделениям договора
+| `flChoice`         | `integer` |   Yes    | Параметр `FlChoice` - флаг выбора информации: `1` - топливо, `2` - оплата дорог, `4` - иные товары (услуги), `3` - топливо и оплата дорог, `5` - топливо и иные товары (услуги), `6` -  оплата дорог и иные товары (услуги), `7` - топливо, оплата дорог и иные товары (услуги)
+| `author`           | `string`  |    No    | Автор изменений 
+| `emtCodeFrm`       | `integer` |    No    | Код эмитента, если меньше нуля, то по всем подразделениям
+| `azsCode`          | `integer` |    No    | Номер азс, если меньше нуля, то по всем подразделениям
+
+Пример запроса
+
+```json
+{
+  "startDate": "2025-09-08T07:05:28.924Z",
+  "endDate": "2025-09-08T07:05:28.924Z",
+  "contractId": 0,
+  "contractIssuerId": 0,
+  "flChoice": 0,
+  "cardNumber": 0,
+  "subDivisnNumber": 0,
+  "discountCode": 0,
+  "author": "string",
+  "emtCodeFrm": 0,
+  "azsCode": 0
+}
+```
+
+Структура ответа
+
+| Key          | Type      | Description
+|--------------|-----------|------------
+| `monthDate`  | `date`    | Месяц (1 число)
+| `beginRest`  | `decimal`    | Сальдо на начало периода
+| `debetTurn`  | `decimal` | Начислено КЗ
+| `creditTurn` | `decimal` | Оплачено по КЗ
+| `endRest`    | `decimal` | Сальдо на конец месяца
+
+Пример успешного ответа
+
+```json
+{
+  "monthDate": "2025-09-08T07:14:55.479Z",
+  "beginRest": 0,
+  "debetTurn": 0,
+  "creditTurn": 0,
+  "endRest": 0
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
 | 401  | Unauthorized
 | 500  | Internal Server Error
