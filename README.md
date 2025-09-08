@@ -1605,11 +1605,24 @@ HTTP статусы ответа
 | `periodBegin`   | `date`    | Начало периода
 | `periodEnd`     | `date`    | Конец периода
 
+```json
+[
+{
+"doseForPeriod": 0,
+"benefit": 0,
+"summForPeriod": 0,
+"periodBegin": "2025-09-08T10:47:45.097Z",
+"periodEnd": "2025-09-08T10:47:45.097Z"
+}
+]
+```
+
 HTTP статусы ответа
 
 | Code | Description
 |------|------------
 | 200  | OK
+| 400  | Bad request
 | 401  | Unauthorized
 | 500  | Internal Server Error
 
@@ -1630,34 +1643,33 @@ HTTP статусы ответа
 | `contractIssuerId` | `integer` |   Yes    | ID эмитента договора
 | `viewDate`         | `date`    |    No    | Дата отображения
 
-Пример запроса
+HTTP статусы ответа
 
-```json
-[
-  {
-    "id": 0,
-    "contrCode": 0,
-    "number": "string",
-    "model": "string",
-    "gasBottleVolume": 0,
-    "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
-    "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
-    "active": true,
-    "vehicleParams": [
-      {
-        "cardCode": 0,
-        "vehicleId": 0,
-        "number": "string",
-        "model": "string",
-        "gasBottleVolume": 0,
-        "gasBottleExaminationDate": "2025-09-08T08:44:57.189Z",
-        "gasBottleNextExaminationDate": "2025-09-08T08:44:57.189Z",
-        "viewInReportFl": true
-      }
-    ]
-  }
-]
-```
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### AcceptanceCertificate document
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Acceptance>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Параметры запроса
+
+| Key        | Type     |Discription
+|------------|----------|------------
+| `date`     | `date`   | Дата
+| `filename` | `string` | Filename
+
+Структура ответа
+
+byte[]
 
 HTTP статусы ответа
 
@@ -1667,3 +1679,31 @@ HTTP статусы ответа
 | 400  | Bad request
 | 401  | Unauthorized
 | 500  | Internal Server Error
+
+### AcceptanceCertificate. Get filename list.
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/AcceptanceList>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Параметры запроса
+
+| Key        | Type     |Discription
+|------------|----------|------------
+| `date`     | `date`   | Дата
+
+Структура ответа
+
+ArrayList
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
