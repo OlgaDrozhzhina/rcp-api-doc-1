@@ -1075,6 +1075,70 @@ HTTP статусы ответа
 | 401  | Unauthorized
 | 500  | Internal Server Error
 
+### Список карт
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/cardlist>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Структура ответа
+
+| Key        | Type      | Description
+|------------|-----------|------------
+| `cardCode` | `integer` | Номер карты 
+| `driver`   | `string`  | Водитель
+| `division` | `string`  | Подразделение
+
+Пример успешного ответа
+
+```json
+{
+  "list": [
+    {
+      "cardCode": 0,
+      "driver": "string",
+      "division": 0
+    }
+  ]
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Получить справочник нефтепродуктов
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/oil>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+
+Структура ответа
+
+| Key            | Type      | Description
+|----------------|-----------|------------
+| `oilCode`      | `integer` | Код нефтепродукта
+| `smallName`    | `string`  | Краткое название нефтепродукта
+| `actualFlag`   | `integer` | Флаг атуильности
+| `сodeOilGroup` | `integer` | Код группы нефтепродукта
+| `nameOilGroup` | `strong`  | Наименование группы нефтепродукта
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
 ### Коммерческий заем
 
 `POST`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/commercial>
@@ -1147,3 +1211,172 @@ HTTP статусы ответа
 | 400  | Bad request
 | 401  | Unauthorized
 | 500  | Internal Server Error
+
+### Получить условия договора
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/terms>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура ответа
+
+| Key                            | Type      | Description
+|--------------------------------|-----------|------------
+| `contractNumber`               | `int`     | Номер договора
+| `contractDate`                 | `date`    | Дата заключения договора
+| `emailFlag`                    | `boolean` | Флаг формирования электронной почты
+| `emailReport`                  | `string`  | Адрес для отправки отчета с ЭЦП
+| `paymentMethod`                | `string`  | Способ оплаты 
+| `expiredDay`                   | `int`     | Отсрочка погашения задолженности (кол-во дней)
+| `discountFlag`                 | `boolean` | Флан расчета скидки
+| `discount`                     | `int`     | Код скидки
+| `loan`                         | `string`  | Коммерческий заем
+| `loanTerm`                     | `string`  | Срок коммерческого займа
+| `loanSize`                     | `string`  | Размер коммерческого займа
+| `loanCost`                     | `string`  | Стоимость коммерческого займа
+| `providerName`                 | `string`  | Наименование поставщика
+| `providerUNP`                  | `string`  | УНП поставщика
+| `providerLegalAddress`         | `string`  | Юридический адрес поставщика
+| `providerPostAddress`          | `string`  | Почтовый адрес поставщика
+| `providerSite`                 | `string`  | Сайт поставщика
+| `providerEmail`                | `string`  | Адрес электронной почты поставщика
+| `providerPhone`                | `string`  | Телефон поставщика
+| `providerAccount`              | `string`  | Расчетный счет поставщика
+| `providerBankName`             | `string`  | Наименование банка поставщика
+| `providerBankCode`             | `string`  | Код банка поставщика
+| `providerBankAddress`          | `string`  | Адрес банка поставщика
+| `customerName`                 | `string`  | Наименование покупателя
+| `customerUNP`                  | `string`  | УНП покупателя
+| `customerLegalAddress`         | `string`  | Юридический адрес покупателя
+| `customerPostAddress`          | `string`  | Почтовый адрес покупателя
+| `contrDiscountList`            | `string`  | Детальная информация по скидке
+| `contrDiscountList`/`vsCode`   | `string`  | Код нефтепродукта
+| `contrDiscountList`/`limit`    | `decimal` | Предел
+| `contrDiscountList`/`disValue` | `decimal` | Значение скидки
+| `contrDiscountList`/`disType`  | `string`  | Описание типа скидки
+| `contrDiscountList`/`oilSet`   | `string`  | Описание набора нефтепродуктов
+
+Пример успешного ответа
+
+```json
+{
+  "contractNumber": 0,
+  "contractDate": "2025-09-08T07:25:41.786Z",
+  "emailFlag": true,
+  "emailReport": "string",
+  "paymentMethod": "string",
+  "payCurrency": "string",
+  "expiredDay": 0,
+  "discountFlag": true,
+  "discount": 0,
+  "loan": "string",
+  "loanTerm": "string",
+  "loanSize": "string",
+  "loanCost": 0,
+  "providerName": "string",
+  "providerUNP": "string",
+  "providerLegalAddress": "string",
+  "providerPostAddress": "string",
+  "providerSite": "string",
+  "providerEmail": "string",
+  "providerPhone": "string",
+  "providerAccount": "string",
+  "providerBankName": "string",
+  "providerBankCode": "string",
+  "providerBankAddress": "string",
+  "customerName": "string",
+  "customerUNP": "string",
+  "customerLegalAddress": "string",
+  "customerPostAddress": "string",
+  "contrDiscountList": [
+    {
+      "vsCode": "string",
+      "limit": 0,
+      "disValue": 0,
+      "disType": "string",
+      "oilSet": "string"
+    }
+  ]
+}
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
+### Получить транспортные средства договора
+
+`GET`: <https://ssl.beloil.by/rcp/i/api/v2/Contract/contractVehicles>
+
+Заголовки
+
+* `Authorization`: `Bearer <токен>`
+* `Content-Type`: `application/json`
+
+Структура ответа
+
+| Key                                            | Type      | Description
+|------------------------------------------------|-----------|------------
+| `сontrCode`                                    | `integer` | Номер карты
+| `number`                                       | `string`  | Номер автомобиля
+| `model`                                        | `string`  | Водитель
+| `gasBottleVolume`                              | `integer` | Объем газового баллона
+| `gasBottleExaminationDate`                     | `date`    | Дата освидетельствования баллона
+| `gassBottleNextExaminationDate`                | `date`    | Дата последующего освидетельствования баллона
+| `active`                                       | `boolean` | Флаг разрешения заправки авто по карте
+| `vehicleParams`                                | `array`   | Параметры автомобиля
+| `vehicleParams`/`cardCode`                     | `string`  | Номер карты
+| `vehicleParams`/`vehicleId`                    | `decimal` | Номер автомобиля
+| `vehicleParams`/`number`                       | `decimal` | Номер автомобиля
+| `vehicleParams`/`model`                        | `string`  | Водитель
+| `vehicleParams`/`gasBottleVolume`              | `integer` | Объем газового баллона
+| `vehicleParams`/`gasBottleExaminationDate`     | `date`    | Дата освидетельствования баллона
+| `vehicleParams`/`gasBottleNextExaminationDate` | `date`    | Дата последующего освидетельствования баллона
+| `vehicleParams`/`viewInReportFl`               | `boolean` | Отражать в отчетах номер авто
+
+Пример успешного ответа
+
+```json
+[
+  {
+    "id": 0,
+    "contrCode": 0,
+    "number": "string",
+    "model": "string",
+    "gasBottleVolume": 0,
+    "gasBottleExaminationDate": "2025-09-08T08:23:41.452Z",
+    "gasBottleNextExaminationDate": "2025-09-08T08:23:41.452Z",
+    "active": true,
+    "vehicleParams": [
+      {
+        "cardCode": 0,
+        "vehicleId": 0,
+        "number": "string",
+        "model": "string",
+        "gasBottleVolume": 0,
+        "gasBottleExaminationDate": "2025-09-08T08:23:41.452Z",
+        "gasBottleNextExaminationDate": "2025-09-08T08:23:41.452Z",
+        "viewInReportFl": true
+      }
+    ]
+  }
+]
+```
+
+HTTP статусы ответа
+
+| Code | Description
+|------|------------
+| 200  | OK
+| 400  | Bad request
+| 401  | Unauthorized
+| 500  | Internal Server Error
+
